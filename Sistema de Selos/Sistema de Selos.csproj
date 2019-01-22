@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\OneDrive\Documents\Drivers\MysqlConnector\MySql.Data.DLL</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controle\Connection.cs" />
+    <Compile Include="Controle\DAOProprietario.cs" />
+    <Compile Include="Controle\DAOSelo.cs" />
+    <Compile Include="Modelo\Proprietario.cs" />
+    <Compile Include="Modelo\Selo.cs" />
     <Compile Include="Visão\CadastroProprietario.cs">
       <SubType>Form</SubType>
     </Compile>
