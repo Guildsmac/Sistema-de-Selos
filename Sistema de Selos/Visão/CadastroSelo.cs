@@ -76,5 +76,31 @@ namespace Sistema_de_Selos
         {
             this.Dispose();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+            string searchSubject = txtBoxBuscar.Text;
+            DAOProprietario dp = new DAOProprietario();
+            dgvProp.Rows.Clear();
+            List<Proprietario> listProp = dp.getPropList();
+            foreach (Proprietario temp in listProp)
+            {
+                if (temp.Matricula.Contains(searchSubject))
+                {
+                    string[] data =
+                    {
+                    temp.Nome,
+                    temp.IdProprietario.ToString(),
+                    temp.Matricula,
+                    temp.Telefone,
+                    temp.Email,
+                    temp.Cargo,
+                    temp.Area
+                };
+                    dgvProp.Rows.Add(data);
+                }
+            }
+        }
     }
 }

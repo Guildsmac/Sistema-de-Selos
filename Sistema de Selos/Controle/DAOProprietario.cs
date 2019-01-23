@@ -9,20 +9,69 @@ namespace Sistema_de_Selos.Controle
 {
     class DAOProprietario : Connection
     {
-        
-        public int insert(Proprietario p)
-        {
 
-            this.prepareConnection("insert into proprietario(nome, matricula, telefone, email, cargo, area)" +
-                "values(@nome, @mat, @tel, @email, @cargo, @area)");
-            this.changeValue("@nome", p.Nome);
-            this.changeValue("@mat", p.Matricula);
-            this.changeValue("@tel", p.Telefone);
-            this.changeValue("@email", p.Email);
-            this.changeValue("@cargo", p.Cargo);
-            this.changeValue("@area", p.Area);
+        public int delete(string id)
+        {
+            this.prepareConnection("delete from proprietario where idProprietario = @idProp");
+            this.changeValue("@idProp", id);
             return this.finalize();
 
+        }
+
+        public int update(Proprietario p)
+        {
+            try
+            {
+                this.prepareConnection("update proprietario " +
+                    "SET nome = @nome, matricula = @mat, telefone = @tel, email = @email, cargo = @cargo, area = @area" +
+                    " WHERE idProprietario = @idProp");
+                this.changeValue("@nome", p.Nome);
+                this.changeValue("@mat", p.Matricula);
+                this.changeValue("@tel", p.Telefone);
+                this.changeValue("@email", p.Email);
+                this.changeValue("@cargo", p.Cargo);
+                this.changeValue("@area", p.Area);
+                this.changeValue("@idProp", p.IdProprietario.ToString());
+                return this.finalize();
+            }catch(Exception e)
+            {
+                return -1;
+            }
+            
+            
+        }
+
+        public int insert(Proprietario p)
+        {
+            try
+            {
+                this.prepareConnection("insert into proprietario(nome, matricula, telefone, email, cargo, area)" +
+                    "values(@nome, @mat, @tel, @email, @cargo, @area)");
+                this.changeValue("@nome", p.Nome);
+                this.changeValue("@mat", p.Matricula);
+                this.changeValue("@tel", p.Telefone);
+                this.changeValue("@email", p.Email);
+                this.changeValue("@cargo", p.Cargo);
+                this.changeValue("@area", p.Area);
+                return this.finalize();
+            }catch(Exception e)
+            {
+                return -1;
+            }
+
+        }
+
+        public string[] getMatriculaAndNameById(int id)
+        {
+            this.prepareConnection("select * from proprietario where idProprietario = " + id);
+            this.setReader();
+            string[] r = new string[] { };
+            while (this.Reader.Read())
+            {
+                r = new string[] { this.Reader.GetString("matricula"), this.Reader.GetString("nome") };
+
+            }
+            return r;
         }
 
         public List<Proprietario> getPropList()

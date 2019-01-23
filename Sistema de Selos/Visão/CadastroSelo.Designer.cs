@@ -43,8 +43,8 @@
             this.depCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtBoxBuscar = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBoxIdProp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProp)).BeginInit();
             this.SuspendLayout();
@@ -129,7 +129,7 @@
             this.dgvProp.Location = new System.Drawing.Point(342, 42);
             this.dgvProp.Name = "dgvProp";
             this.dgvProp.RowTemplate.Height = 24;
-            this.dgvProp.Size = new System.Drawing.Size(446, 223);
+            this.dgvProp.Size = new System.Drawing.Size(632, 223);
             this.dgvProp.TabIndex = 14;
             this.dgvProp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgvProp.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProp_CellDoubleClick);
@@ -169,21 +169,22 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Matrícula do Proprietário";
             // 
-            // textBox4
+            // txtBoxBuscar
             // 
-            this.textBox4.Location = new System.Drawing.Point(508, 271);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(199, 22);
-            this.textBox4.TabIndex = 16;
+            this.txtBoxBuscar.Location = new System.Drawing.Point(508, 271);
+            this.txtBoxBuscar.Name = "txtBoxBuscar";
+            this.txtBoxBuscar.Size = new System.Drawing.Size(385, 22);
+            this.txtBoxBuscar.TabIndex = 16;
             // 
-            // button3
+            // btnBuscar
             // 
-            this.button3.Location = new System.Drawing.Point(713, 271);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Buscar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBuscar.Location = new System.Drawing.Point(899, 268);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 25);
+            this.btnBuscar.TabIndex = 17;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBoxIdProp
             // 
@@ -197,10 +198,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(986, 450);
             this.Controls.Add(this.txtBoxIdProp);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBoxBuscar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvProp);
             this.Controls.Add(this.btnCadastrarSelo);
@@ -232,8 +233,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dgvProp;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtBoxBuscar;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn matricula;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProp;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;

@@ -50,5 +50,10 @@ namespace Sistema_de_Selos
         {
             this.Dispose();
         }
+
+        private void CadastroProprietario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

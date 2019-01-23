@@ -11,6 +11,8 @@ namespace Sistema_de_Selos.Modelo
         private String placa;
         private String modelo;
         private String cor;
+        private string matriculaProprietario;
+        private string nomeProprietario;
         private int idProprietario;
         private int numSelo;
 
@@ -20,6 +22,17 @@ namespace Sistema_de_Selos.Modelo
             this.placa = placa;
             this.modelo = modelo;
             this.cor = cor;
+        }
+
+        public Selo(int idProprietario, int numSelo, String placa, String modelo, String cor, string matriculaProprietario, string nomeProprietario)
+        {
+            this.numSelo = numSelo;
+            this.idProprietario = idProprietario;
+            this.placa = placa;
+            this.modelo = modelo;
+            this.cor = cor;
+            this.matriculaProprietario = matriculaProprietario;
+            this.nomeProprietario = nomeProprietario;
         }
 
         public Selo(int numSelo, int idProprietario, String placa, String modelo, String cor)
@@ -36,5 +49,7 @@ namespace Sistema_de_Selos.Modelo
         public string Cor { get => cor; set => cor = value; }
         public int NumSelo { get => numSelo; set => numSelo = value; }
         public int IdProprietario { get => idProprietario; set => idProprietario = value; }
+        public string MatriculaProprietario { get => matriculaProprietario; set => matriculaProprietario = value; }
+        public string NomeProprietario { get => nomeProprietario; set => nomeProprietario = value; }
     }
 }
