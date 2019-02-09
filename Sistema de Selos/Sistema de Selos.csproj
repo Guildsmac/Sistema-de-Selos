@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="Controle\Connection.cs" />
     <Compile Include="Controle\DAOProprietario.cs" />
-    <Compile Include="Controle\DAOSelo.cs" />
+    <Compile Include="Controle\DAOVeiculo.cs" />
     <Compile Include="Modelo\Proprietario.cs" />
     <Compile Include="Modelo\Selo.cs" />
     <Compile Include="Visão\CadastroProprietario.cs">

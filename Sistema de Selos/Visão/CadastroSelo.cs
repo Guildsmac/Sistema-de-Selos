@@ -71,7 +71,7 @@ namespace Sistema_de_Selos
                     this.txtBoxCor.Text
 
                 );
-                DAOSelo ds = new DAOSelo();
+                DAOVeiculo ds = new DAOVeiculo();
                 if (ds.insert(s) > 0)
                 {
                     MessageBox.Show("Selo salvo com sucesso. O selo gerado é " + ds.getLastInsertedID() + "!");
