@@ -55,7 +55,7 @@ namespace Sistema_de_Selos.Controle
 
         }
 
-        public List<Selo> getSeloList()
+        public List<Selo> select()
         {
             List<Selo> seloList = new List<Selo>();
             this.prepareConnection("select * from selo");

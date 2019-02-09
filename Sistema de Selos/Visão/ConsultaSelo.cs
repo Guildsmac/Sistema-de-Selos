@@ -29,7 +29,7 @@ namespace Sistema_de_Selos
         {
             DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listSelo = ds.getSeloList();
+            List<Selo> listSelo = ds.select();
             foreach (Selo temp in listSelo)
             {
                 string[] data =
@@ -43,12 +43,12 @@ namespace Sistema_de_Selos
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void verVeiculo(object sender, EventArgs e)
         {
             string searchSubject = txtBoxBuscar.Text;
             DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listProp = ds.getSeloList();
+            List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
             {
                 if (temp.NumSelo.ToString().Contains(searchSubject))

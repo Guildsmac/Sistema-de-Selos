@@ -29,11 +29,36 @@ namespace Sistema_de_Selos
 
         }
 
+        private void clearAll()
+        {
+            this.txtBoxSelo.Text = "";
+            this.txtBoxPlaca.Text = "";
+            this.txtBoxModelo.Text = "";
+            this.txtBoxCor.Text = "";
+            DAOSelo ds = new DAOSelo();
+            dgvSelo.Rows.Clear();
+            List<Selo> listSelo = ds.select();
+            foreach (Selo temp in listSelo)
+            {
+                string[] data =
+                {
+                    temp.NumSelo.ToString(),
+                    temp.Placa,
+                    temp.Modelo,
+                    temp.Cor,
+                    temp.MatriculaProprietario,
+                    temp.NomeProprietario,
+                    temp.IdProprietario.ToString()
+                };
+                dgvSelo.Rows.Add(data);
+            }
+        }
+
         private void ManutencaoSelo_Load(object sender, EventArgs e)
         {
             DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listSelo = ds.getSeloList();
+            List<Selo> listSelo = ds.select();
             foreach (Selo temp in listSelo)
             {
                 string[] data =
@@ -60,7 +85,7 @@ namespace Sistema_de_Selos
             string searchSubject = txtBoxBuscar.Text;
             DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listProp = ds.getSeloList();
+            List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
             {
                 if (temp.NumSelo.ToString().Contains(searchSubject))
@@ -90,7 +115,7 @@ namespace Sistema_de_Selos
 
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
+        private void alterarVeiculo(object sender, EventArgs e)
         {
             if (this.txtBoxSelo.Text != "")
             {
@@ -101,9 +126,12 @@ namespace Sistema_de_Selos
                     this.txtBoxPlaca.Text,
                     this.txtBoxModelo.Text,
                     this.txtBoxCor.Text);
-                
+
                 if (ds.update(s) > 0)
+                {
                     MessageBox.Show("Selo atualizado com sucesso!");
+                    this.clearAll();
+                }
                 else
                     MessageBox.Show("Não foi possível atualizar selo");
             }
@@ -114,19 +142,58 @@ namespace Sistema_de_Selos
             
         }
 
-        private void btnDeletar_Click(object sender, EventArgs e)
+        private void deletarVeiculo(object sender, EventArgs e)
         {
             if (this.txtBoxSelo.Text != "")
             {
                 DAOSelo ds = new DAOSelo();
-                if(ds.delete(Convert.ToInt32(this.txtBoxSelo.Text))>0)
+                if (ds.delete(Convert.ToInt32(this.txtBoxSelo.Text)) > 0)
+                {
                     MessageBox.Show("Selo deletado com sucesso!");
+                    this.clearAll();
+                }
                 else
                     MessageBox.Show("Não foi possível deletar selo");
+                
             }
             else
             {
                 MessageBox.Show("Por favor, clique duas vezes no selo desejado!");
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buscarProprietario(object sender, EventArgs e)
+        {
+            string searchSubject = txtBoxMatriculaProp.Text;
+            DAOSelo ds = new DAOSelo();
+            dgvSelo.Rows.Clear();
+            List<Selo> listProp = ds.select();
+            foreach (Selo temp in listProp)
+            {
+                if (temp.MatriculaProprietario.ToString().Contains(searchSubject))
+                {
+                    string[] data =
+                    {
+                    temp.NumSelo.ToString(),
+                    temp.Placa,
+                    temp.Modelo,
+                    temp.Cor,
+                    temp.MatriculaProprietario,
+                    temp.NomeProprietario,
+                    temp.IdProprietario.ToString()
+                };
+                    dgvSelo.Rows.Add(data);
+                }
             }
         }
     }

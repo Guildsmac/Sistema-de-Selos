@@ -19,11 +19,20 @@ namespace Sistema_de_Selos
             InitializeComponent();
         }
 
+        private void clearAll()
+        {
+            this.txtBoxPlaca.Text = "";
+            this.txtBoxModelo.Text = "";
+            this.txtBoxCor.Text = "";
+            this.txtBoxIdProp.Text = "";
+
+        }
+
         private void CadastroSelo_Load(object sender, EventArgs e)
         {
             DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.getPropList();
+            List<Proprietario> listProp = dp.select();
             foreach(Proprietario temp in listProp)
             {
                 string[] data =
@@ -51,7 +60,7 @@ namespace Sistema_de_Selos
 
         }
 
-        private void btnCadastrarSelo_Click(object sender, EventArgs e)
+        private void cadastrarVeiculo(object sender, EventArgs e)
         {
             if (txtBoxIdProp.Text != "") {
                 
@@ -64,7 +73,10 @@ namespace Sistema_de_Selos
                 );
                 DAOSelo ds = new DAOSelo();
                 if (ds.insert(s) > 0)
+                {
                     MessageBox.Show("Selo salvo com sucesso. O selo gerado é " + ds.getLastInsertedID() + "!");
+                    this.clearAll();
+                }
                 else
                     MessageBox.Show("Erro ao salvar os dados");
             }
@@ -77,13 +89,13 @@ namespace Sistema_de_Selos
             this.Dispose();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void buscarProprietario(object sender, EventArgs e)
         {
 
             string searchSubject = txtBoxBuscar.Text;
             DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.getPropList();
+            List<Proprietario> listProp = dp.select();
             foreach (Proprietario temp in listProp)
             {
                 if (temp.Matricula.Contains(searchSubject))

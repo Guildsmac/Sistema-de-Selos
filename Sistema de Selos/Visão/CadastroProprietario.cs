@@ -29,7 +29,15 @@ namespace Sistema_de_Selos
 
         }
 
-        private void btnCadastrarProprietario_Click(object sender, EventArgs e)
+        private void clearAll()
+        {
+            this.txtBoxNomeProp.Text = "";
+            this.txtBoxMatProp.Text = "";
+            this.txtBoxTelProp.Text = "";
+            this.txtBoxEmailPropi.Text = "";
+        }
+
+        private void cadastrarProprietario(object sender, EventArgs e)
         {
             Proprietario p = new Proprietario(
                 this.txtBoxNomeProp.Text,
@@ -41,7 +49,10 @@ namespace Sistema_de_Selos
                 );
             DAOProprietario dp = new DAOProprietario();
             if (dp.insert(p) > 0)
+            {
                 MessageBox.Show("Proprietário cadastrado com sucesso");
+                this.clearAll();
+            }
             else
                 MessageBox.Show("Erro ao salvar dados");
         }

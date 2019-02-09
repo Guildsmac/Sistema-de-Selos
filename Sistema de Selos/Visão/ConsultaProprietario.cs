@@ -24,13 +24,13 @@ namespace Sistema_de_Selos
 
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void verProprietario(object sender, EventArgs e)
         {
 
             string searchSubject = txtBoxSearch.Text;
             DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.getPropList();
+            List<Proprietario> listProp = dp.select();
             foreach (Proprietario temp in listProp)
             {
                 if (temp.Matricula.Contains(searchSubject))
@@ -55,7 +55,7 @@ namespace Sistema_de_Selos
             
             DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.getPropList();
+            List<Proprietario> listProp = dp.select();
             foreach (Proprietario temp in listProp)
             {
                 string[] data =

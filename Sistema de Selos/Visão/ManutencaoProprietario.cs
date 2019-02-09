@@ -24,11 +24,37 @@ namespace Sistema_de_Selos
 
         }
 
+        private void clearAll()
+        {
+            this.txtBoxNome.Text = "";
+            this.txtBoxMat.Text = "";
+            this.txtBoxTelefone.Text = "";
+            this.txtBoxEmail.Text = "";
+            this.txtBoxIdProp.Text = "";
+            DAOProprietario dp = new DAOProprietario();
+            dgvProp.Rows.Clear();
+            List<Proprietario> listProp = dp.select();
+            foreach (Proprietario temp in listProp)
+            {
+                string[] data =
+                {
+                    temp.Matricula,
+                    temp.Nome,
+                    temp.Area,
+                    temp.Cargo,
+                    temp.Email,
+                    temp.Telefone,
+                    temp.IdProprietario.ToString()
+                };
+                dgvProp.Rows.Add(data);
+            }
+        }
+
         private void ManutencaoProprietario_Load(object sender, EventArgs e)
         {
             DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.getPropList();
+            List<Proprietario> listProp = dp.select();
             foreach(Proprietario temp in listProp)
             {
                 string[] data =
@@ -69,12 +95,12 @@ namespace Sistema_de_Selos
 
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void buscarProprietario(object sender, EventArgs e)
         {
             string searchSubject = txtBoxMat.Text;
             DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.getPropList();
+            List<Proprietario> listProp = dp.select();
             foreach (Proprietario temp in listProp)
             {
                 if (temp.Matricula.Contains(searchSubject))
@@ -94,7 +120,7 @@ namespace Sistema_de_Selos
             }
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
+        private void alterarProprietario(object sender, EventArgs e)
         {
             if (this.txtBoxIdProp.Text != "")
             {
@@ -109,7 +135,10 @@ namespace Sistema_de_Selos
                     );
                 DAOProprietario dp = new DAOProprietario();
                 if (dp.update(p) > 0)
+                {
                     MessageBox.Show("Proprietário atualizado com sucesso!");
+                    this.clearAll();
+                }
                 else
                     MessageBox.Show("Erro ao salvar Dados");
             }
@@ -122,13 +151,16 @@ namespace Sistema_de_Selos
 
         }
 
-        private void btnDeletar_Click(object sender, EventArgs e)
+        private void deletarProprietario(object sender, EventArgs e)
         {
             if(this.txtBoxIdProp.Text != "")
             {
                 DAOProprietario dp = new DAOProprietario();
                 if (dp.delete(this.txtBoxIdProp.Text) > 0)
+                {
                     MessageBox.Show("Proprietário deletado com sucesso!");
+                    this.clearAll();
+                }
                 else
                     MessageBox.Show("Erro ao deletar");
             }

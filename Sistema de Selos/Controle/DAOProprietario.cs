@@ -74,7 +74,7 @@ namespace Sistema_de_Selos.Controle
             return r;
         }
 
-        public List<Proprietario> getPropList()
+        public List<Proprietario> select()
         {
             List<Proprietario> propList = new List<Proprietario>();
 

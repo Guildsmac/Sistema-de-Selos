@@ -105,7 +105,7 @@
             this.btnAtualizar.TabIndex = 6;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            this.btnAtualizar.Click += new System.EventHandler(this.alterarProprietario);
             // 
             // btnDeletar
             // 
@@ -115,7 +115,7 @@
             this.btnDeletar.TabIndex = 7;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
-            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            this.btnDeletar.Click += new System.EventHandler(this.deletarProprietario);
             // 
             // btnBuscar
             // 
@@ -125,7 +125,7 @@
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.Click += new System.EventHandler(this.buscarProprietario);
             // 
             // dgvProp
             // 

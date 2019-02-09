@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvSelo = new System.Windows.Forms.DataGridView();
+            this.selo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matriculaProp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBoxSelo = new System.Windows.Forms.TextBox();
             this.btnBuscarSelo = new System.Windows.Forms.Button();
@@ -41,14 +47,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.txtBoxPlaca = new System.Windows.Forms.TextBox();
             this.labelmodelo = new System.Windows.Forms.Label();
-            this.selo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matriculaProp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBoxBuscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBoxMatriculaProp = new System.Windows.Forms.TextBox();
+            this.btnBuscarSeloMatricula = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,6 +73,38 @@
             this.dgvSelo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgvSelo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelo_CellDoubleClick);
             // 
+            // selo
+            // 
+            this.selo.HeaderText = "Selo";
+            this.selo.Name = "selo";
+            // 
+            // placa
+            // 
+            this.placa.HeaderText = "Placa";
+            this.placa.Name = "placa";
+            // 
+            // modelo
+            // 
+            this.modelo.HeaderText = "Modelo";
+            this.modelo.Name = "modelo";
+            // 
+            // cor
+            // 
+            this.cor.HeaderText = "Cor";
+            this.cor.Name = "cor";
+            // 
+            // matriculaProp
+            // 
+            this.matriculaProp.HeaderText = "Matrícula do Proprietário";
+            this.matriculaProp.Name = "matriculaProp";
+            this.matriculaProp.Width = 200;
+            // 
+            // nomeProp
+            // 
+            this.nomeProp.HeaderText = "Nome do Proprietário";
+            this.nomeProp.Name = "nomeProp";
+            this.nomeProp.Width = 200;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -89,7 +124,7 @@
             // 
             // btnBuscarSelo
             // 
-            this.btnBuscarSelo.Location = new System.Drawing.Point(800, 375);
+            this.btnBuscarSelo.Location = new System.Drawing.Point(785, 375);
             this.btnBuscarSelo.Name = "btnBuscarSelo";
             this.btnBuscarSelo.Size = new System.Drawing.Size(91, 23);
             this.btnBuscarSelo.TabIndex = 4;
@@ -105,7 +140,7 @@
             this.btnDeletar.TabIndex = 13;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
-            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            this.btnDeletar.Click += new System.EventHandler(this.deletarVeiculo);
             // 
             // btnAtualizar
             // 
@@ -115,7 +150,7 @@
             this.btnAtualizar.TabIndex = 12;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            this.btnAtualizar.Click += new System.EventHandler(this.alterarVeiculo);
             // 
             // txtBoxCor
             // 
@@ -175,59 +210,58 @@
             this.labelmodelo.TabIndex = 16;
             this.labelmodelo.Text = "Placa";
             // 
-            // selo
-            // 
-            this.selo.HeaderText = "Selo";
-            this.selo.Name = "selo";
-            // 
-            // placa
-            // 
-            this.placa.HeaderText = "Placa";
-            this.placa.Name = "placa";
-            // 
-            // modelo
-            // 
-            this.modelo.HeaderText = "Modelo";
-            this.modelo.Name = "modelo";
-            // 
-            // cor
-            // 
-            this.cor.HeaderText = "Cor";
-            this.cor.Name = "cor";
-            // 
-            // matriculaProp
-            // 
-            this.matriculaProp.HeaderText = "Matrícula do Proprietário";
-            this.matriculaProp.Name = "matriculaProp";
-            this.matriculaProp.Width = 200;
-            // 
-            // nomeProp
-            // 
-            this.nomeProp.HeaderText = "Nome do Proprietário";
-            this.nomeProp.Name = "nomeProp";
-            this.nomeProp.Width = 200;
-            // 
             // txtBoxBuscar
             // 
-            this.txtBoxBuscar.Location = new System.Drawing.Point(454, 375);
+            this.txtBoxBuscar.Location = new System.Drawing.Point(514, 375);
             this.txtBoxBuscar.Name = "txtBoxBuscar";
-            this.txtBoxBuscar.Size = new System.Drawing.Size(340, 22);
+            this.txtBoxBuscar.Size = new System.Drawing.Size(265, 22);
             this.txtBoxBuscar.TabIndex = 18;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(273, 378);
+            this.label4.Location = new System.Drawing.Point(304, 378);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 17);
             this.label4.TabIndex = 19;
             this.label4.Text = "Buscar por número de Selo";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(273, 406);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(235, 17);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Buscar por matrícula de proprietário";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtBoxMatriculaProp
+            // 
+            this.txtBoxMatriculaProp.Location = new System.Drawing.Point(514, 403);
+            this.txtBoxMatriculaProp.Name = "txtBoxMatriculaProp";
+            this.txtBoxMatriculaProp.Size = new System.Drawing.Size(265, 22);
+            this.txtBoxMatriculaProp.TabIndex = 21;
+            this.txtBoxMatriculaProp.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnBuscarSeloMatricula
+            // 
+            this.btnBuscarSeloMatricula.Location = new System.Drawing.Point(785, 403);
+            this.btnBuscarSeloMatricula.Name = "btnBuscarSeloMatricula";
+            this.btnBuscarSeloMatricula.Size = new System.Drawing.Size(91, 23);
+            this.btnBuscarSeloMatricula.TabIndex = 20;
+            this.btnBuscarSeloMatricula.Text = "Buscar";
+            this.btnBuscarSeloMatricula.UseVisualStyleBackColor = true;
+            this.btnBuscarSeloMatricula.Click += new System.EventHandler(this.buscarProprietario);
+            // 
             // ManutencaoSelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1316, 409);
+            this.ClientSize = new System.Drawing.Size(1316, 504);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtBoxMatriculaProp);
+            this.Controls.Add(this.btnBuscarSeloMatricula);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBoxBuscar);
             this.Controls.Add(this.txtBoxPlaca);
@@ -275,5 +309,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProp;
         private System.Windows.Forms.TextBox txtBoxBuscar;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBoxMatriculaProp;
+        private System.Windows.Forms.Button btnBuscarSeloMatricula;
     }
 }

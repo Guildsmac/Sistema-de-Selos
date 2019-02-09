@@ -101,7 +101,7 @@
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.Click += new System.EventHandler(this.verVeiculo);
             // 
             // button2
             // 
@@ -124,7 +124,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvSelo);
             this.Name = "ConsultaSelo";
-            this.Text = "ConsultaSelo";
+            this.Text = "Consulta de Veículo";
             this.Load += new System.EventHandler(this.ConsultaSelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelo)).EndInit();
             this.ResumeLayout(false);

@@ -158,7 +158,7 @@
             this.btnCadastrarProprietario.TabIndex = 11;
             this.btnCadastrarProprietario.Text = "Cadastrar";
             this.btnCadastrarProprietario.UseVisualStyleBackColor = true;
-            this.btnCadastrarProprietario.Click += new System.EventHandler(this.btnCadastrarProprietario_Click);
+            this.btnCadastrarProprietario.Click += new System.EventHandler(this.cadastrarProprietario);
             // 
             // txtBoxEmailPropi
             // 
