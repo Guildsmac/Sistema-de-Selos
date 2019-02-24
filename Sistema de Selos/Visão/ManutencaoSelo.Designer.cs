@@ -70,8 +70,7 @@
             this.dgvSelo.RowTemplate.Height = 24;
             this.dgvSelo.Size = new System.Drawing.Size(1028, 333);
             this.dgvSelo.TabIndex = 1;
-            this.dgvSelo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dgvSelo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelo_CellDoubleClick);
+            this.dgvSelo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelo_CellContentClick);
             // 
             // selo
             // 
@@ -220,11 +219,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(304, 378);
+            this.label4.Location = new System.Drawing.Point(288, 378);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 17);
+            this.label4.Size = new System.Drawing.Size(220, 17);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Buscar por número de Selo";
+            this.label4.Text = "Buscar por número de Selo/Placa";
             // 
             // label5
             // 

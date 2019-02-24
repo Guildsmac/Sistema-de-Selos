@@ -37,13 +37,12 @@ namespace Sistema_de_Selos
                 {
                     string[] data =
                     {
-                    temp.Nome,
-                    temp.IdProprietario.ToString(),
                     temp.Matricula,
-                    temp.Telefone,
-                    temp.Email,
+                    temp.Nome,
+                    temp.Area,
                     temp.Cargo,
-                    temp.Area
+                    temp.Email,
+                    temp.Telefone,
                 };
                     dgvProp.Rows.Add(data);
                 }

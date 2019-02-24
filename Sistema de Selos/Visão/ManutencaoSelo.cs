@@ -24,11 +24,6 @@ namespace Sistema_de_Selos
             return dgvSelo.CurrentRow.Cells[position].Value.ToString();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void clearAll()
         {
             this.txtBoxSelo.Text = "";
@@ -88,7 +83,7 @@ namespace Sistema_de_Selos
             List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
             {
-                if (temp.NumSelo.ToString().Contains(searchSubject))
+                if (temp.NumSelo.ToString().Contains(searchSubject) || temp.Placa.ToString().Contains(searchSubject))
                 {
                     string[] data =
                     {
@@ -103,16 +98,6 @@ namespace Sistema_de_Selos
                     dgvSelo.Rows.Add(data);
                 }
             }
-        }
-
-        private void dgvSelo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            this.txtBoxSelo.Text = this.getColumnByPosition(0);
-            this.txtBoxPlaca.Text = this.getColumnByPosition(1);
-            this.txtBoxModelo.Text = this.getColumnByPosition(2);
-            this.txtBoxCor.Text = this.getColumnByPosition(3);
-
         }
 
         private void alterarVeiculo(object sender, EventArgs e)
@@ -195,6 +180,14 @@ namespace Sistema_de_Selos
                     dgvSelo.Rows.Add(data);
                 }
             }
+        }
+
+        private void dgvSelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.txtBoxSelo.Text = this.getColumnByPosition(0);
+            this.txtBoxPlaca.Text = this.getColumnByPosition(1);
+            this.txtBoxModelo.Text = this.getColumnByPosition(2);
+            this.txtBoxCor.Text = this.getColumnByPosition(3);
         }
     }
 }

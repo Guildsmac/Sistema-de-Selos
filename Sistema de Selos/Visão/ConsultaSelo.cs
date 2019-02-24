@@ -51,7 +51,7 @@ namespace Sistema_de_Selos
             List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
             {
-                if (temp.NumSelo.ToString().Contains(searchSubject))
+                if (temp.NumSelo.ToString().Contains(searchSubject) || temp.Placa.ToString().Contains(searchSubject))
                 {
                     string[] data =
                     {

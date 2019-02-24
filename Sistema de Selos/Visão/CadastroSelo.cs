@@ -37,13 +37,11 @@ namespace Sistema_de_Selos
             {
                 string[] data =
                 {
-                    temp.Nome,
-                    temp.IdProprietario.ToString(),
                     temp.Matricula,
-                    temp.Telefone,
-                    temp.Email,
+                    temp.IdProprietario.ToString(),
+                    temp.Nome,
+                    temp.Area,
                     temp.Cargo,
-                    temp.Area
                 };
                 dgvProp.Rows.Add(data);
             }
@@ -51,12 +49,12 @@ namespace Sistema_de_Selos
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            this.txtBoxIdProp.Text = dgvProp.CurrentRow.Cells[1].Value.ToString();
         }
 
         private void dgvProp_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.txtBoxIdProp.Text = dgvProp.CurrentRow.Cells[1].Value.ToString();
+            
 
         }
 
@@ -102,13 +100,11 @@ namespace Sistema_de_Selos
                 {
                     string[] data =
                     {
-                    temp.Nome,
-                    temp.IdProprietario.ToString(),
                     temp.Matricula,
-                    temp.Telefone,
-                    temp.Email,
+                    temp.IdProprietario.ToString(),
+                    temp.Nome,
+                    temp.Area,
                     temp.Cargo,
-                    temp.Area
                 };
                     dgvProp.Rows.Add(data);
                 }
