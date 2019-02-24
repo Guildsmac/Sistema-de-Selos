@@ -35,7 +35,7 @@ namespace Sistema_de_Selos
             this.txtBoxPlaca.Text = "";
             this.txtBoxModelo.Text = "";
             this.txtBoxCor.Text = "";
-            DAOVeiculo ds = new DAOVeiculo();
+            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listSelo = ds.select();
             foreach (Selo temp in listSelo)
@@ -56,7 +56,7 @@ namespace Sistema_de_Selos
 
         private void ManutencaoSelo_Load(object sender, EventArgs e)
         {
-            DAOVeiculo ds = new DAOVeiculo();
+            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listSelo = ds.select();
             foreach (Selo temp in listSelo)
@@ -83,7 +83,7 @@ namespace Sistema_de_Selos
         private void btnBuscarSelo_Click(object sender, EventArgs e)
         {
             string searchSubject = txtBoxBuscar.Text;
-            DAOVeiculo ds = new DAOVeiculo();
+            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
@@ -119,7 +119,7 @@ namespace Sistema_de_Selos
         {
             if (this.txtBoxSelo.Text != "")
             {
-                DAOVeiculo ds = new DAOVeiculo();
+                DAOSelo ds = new DAOSelo();
                 Selo s = new Selo(
                     Convert.ToInt32(this.txtBoxSelo.Text),
                     0,
@@ -146,7 +146,7 @@ namespace Sistema_de_Selos
         {
             if (this.txtBoxSelo.Text != "")
             {
-                DAOVeiculo ds = new DAOVeiculo();
+                DAOSelo ds = new DAOSelo();
                 if (ds.delete(Convert.ToInt32(this.txtBoxSelo.Text)) > 0)
                 {
                     MessageBox.Show("Selo deletado com sucesso!");
@@ -175,7 +175,7 @@ namespace Sistema_de_Selos
         private void buscarProprietario(object sender, EventArgs e)
         {
             string searchSubject = txtBoxMatriculaProp.Text;
-            DAOVeiculo ds = new DAOVeiculo();
+            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)

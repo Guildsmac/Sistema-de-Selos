@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace Sistema_de_Selos.Controle
 {
-    class DAOVeiculo : Connection
+    class DAOSelo : Connection
     {
 
         public int delete(int id)

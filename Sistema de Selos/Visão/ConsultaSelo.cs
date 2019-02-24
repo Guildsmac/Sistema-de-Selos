@@ -27,7 +27,7 @@ namespace Sistema_de_Selos
 
         private void ConsultaSelo_Load(object sender, EventArgs e)
         {
-            DAOVeiculo ds = new DAOVeiculo();
+            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listSelo = ds.select();
             foreach (Selo temp in listSelo)
@@ -46,7 +46,7 @@ namespace Sistema_de_Selos
         private void verVeiculo(object sender, EventArgs e)
         {
             string searchSubject = txtBoxBuscar.Text;
-            DAOVeiculo ds = new DAOVeiculo();
+            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
