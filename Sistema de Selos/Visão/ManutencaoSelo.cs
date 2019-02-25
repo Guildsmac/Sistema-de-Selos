@@ -30,44 +30,28 @@ namespace Sistema_de_Selos
             this.txtBoxPlaca.Text = "";
             this.txtBoxModelo.Text = "";
             this.txtBoxCor.Text = "";
-            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listSelo = ds.select();
-            foreach (Selo temp in listSelo)
-            {
-                string[] data =
-                {
-                    temp.NumSelo.ToString(),
-                    temp.Placa,
-                    temp.Modelo,
-                    temp.Cor,
-                    temp.MatriculaProprietario,
-                    temp.NomeProprietario,
-                    temp.IdProprietario.ToString()
-                };
-                dgvSelo.Rows.Add(data);
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> selos = udc.verVeiculo();
+            foreach (string[] temp in selos)
+                dgvSelo.Rows.Add(temp);
+        }
+
+        private bool checkEmpty()
+        {
+            if (this.txtBoxCor.Text == "" || this.txtBoxPlaca.Text == "" || this.txtBoxModelo.Text == "")
+                return true;
+            return false;
         }
 
         private void ManutencaoSelo_Load(object sender, EventArgs e)
         {
-            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listSelo = ds.select();
-            foreach (Selo temp in listSelo)
-            {
-                string[] data =
-                {
-                    temp.NumSelo.ToString(),
-                    temp.Placa,
-                    temp.Modelo,
-                    temp.Cor,
-                    temp.MatriculaProprietario,
-                    temp.NomeProprietario,
-                    temp.IdProprietario.ToString()
-                };
-                dgvSelo.Rows.Add(data);
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> selos = udc.verVeiculo();
+            foreach(string[] temp in selos)
+                dgvSelo.Rows.Add(temp);
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -78,47 +62,35 @@ namespace Sistema_de_Selos
         private void btnBuscarSelo_Click(object sender, EventArgs e)
         {
             string searchSubject = txtBoxBuscar.Text;
-            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listProp = ds.select();
-            foreach (Selo temp in listProp)
-            {
-                if (temp.NumSelo.ToString().Contains(searchSubject) || temp.Placa.ToString().Contains(searchSubject))
-                {
-                    string[] data =
-                    {
-                    temp.NumSelo.ToString(),
-                    temp.Placa,
-                    temp.Modelo,
-                    temp.Cor,
-                    temp.MatriculaProprietario,
-                    temp.NomeProprietario,
-                    temp.IdProprietario.ToString()
-                };
-                    dgvSelo.Rows.Add(data);
-                }
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> selos = udc.buscarVeiculo(searchSubject);
+            foreach (string[] temp in selos)
+                dgvSelo.Rows.Add(temp);
+            
         }
 
         private void alterarVeiculo(object sender, EventArgs e)
         {
             if (this.txtBoxSelo.Text != "")
             {
-                DAOSelo ds = new DAOSelo();
-                Selo s = new Selo(
-                    Convert.ToInt32(this.txtBoxSelo.Text),
-                    0,
-                    this.txtBoxPlaca.Text,
-                    this.txtBoxModelo.Text,
-                    this.txtBoxCor.Text);
-
-                if (ds.update(s) > 0)
+                if (!this.checkEmpty())
                 {
-                    MessageBox.Show("Selo atualizado com sucesso!");
-                    this.clearAll();
+                    UnidadeDeControle udc = new UnidadeDeControle();
+                    if (udc.alterarVeiculo(
+                        Convert.ToInt32(this.txtBoxSelo.Text),
+                        this.txtBoxPlaca.Text,
+                        this.txtBoxModelo.Text,
+                        this.txtBoxCor.Text))
+                    {
+                        MessageBox.Show("Selo atualizado com sucesso!");
+                        this.clearAll();
+                    }
+                    else
+                        MessageBox.Show("Não foi possível atualizar selo");
                 }
                 else
-                    MessageBox.Show("Não foi possível atualizar selo");
+                    MessageBox.Show("Por favor, digite todos os campos.");
             }
             else
             {
@@ -131,14 +103,14 @@ namespace Sistema_de_Selos
         {
             if (this.txtBoxSelo.Text != "")
             {
-                DAOSelo ds = new DAOSelo();
-                if (ds.delete(Convert.ToInt32(this.txtBoxSelo.Text)) > 0)
-                {
-                    MessageBox.Show("Selo deletado com sucesso!");
+                UnidadeDeControle udc = new UnidadeDeControle();
+                if (udc.deletarVeiculo(Convert.ToInt32(this.txtBoxSelo.Text))){
+                    MessageBox.Show("Selo deletado com sucesso.");
                     this.clearAll();
-                }
-                else
-                    MessageBox.Show("Não foi possível deletar selo");
+
+                } else
+                    MessageBox.Show("Erro ao deletar o selo.");
+           
                 
             }
             else
@@ -159,13 +131,13 @@ namespace Sistema_de_Selos
 
         private void buscarProprietario(object sender, EventArgs e)
         {
-            string searchSubject = txtBoxMatriculaProp.Text;
+            /* string searchSubject = txtBoxMatriculaProp.Text;
             DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
             List<Selo> listProp = ds.select();
             foreach (Selo temp in listProp)
             {
-                if (temp.MatriculaProprietario.ToString().Contains(searchSubject))
+                if (true)//(temp.MatriculaProprietario.ToString().Contains(searchSubject))
                 {
                     string[] data =
                     {
@@ -173,13 +145,11 @@ namespace Sistema_de_Selos
                     temp.Placa,
                     temp.Modelo,
                     temp.Cor,
-                    temp.MatriculaProprietario,
-                    temp.NomeProprietario,
                     temp.IdProprietario.ToString()
                 };
                     dgvSelo.Rows.Add(data);
                 }
-            }
+            }*/
         }
 
         private void dgvSelo_CellContentClick(object sender, DataGridViewCellEventArgs e)

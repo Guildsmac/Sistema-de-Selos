@@ -25,6 +25,8 @@ namespace Sistema_de_Selos.Modelo
         public string Area { get => area; set => area = value; }
         public int IdProprietario { get => idProprietario; set => idProprietario = value; }
 
+ 
+
         public Proprietario(int idProprietario, string nome, string matricula, string telefone, string email, string cargo, string area)
         {
             this.nome = nome;

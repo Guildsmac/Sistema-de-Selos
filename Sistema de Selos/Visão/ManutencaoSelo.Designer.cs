@@ -49,9 +49,6 @@
             this.labelmodelo = new System.Windows.Forms.Label();
             this.txtBoxBuscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtBoxMatriculaProp = new System.Windows.Forms.TextBox();
-            this.btnBuscarSeloMatricula = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,7 +120,7 @@
             // 
             // btnBuscarSelo
             // 
-            this.btnBuscarSelo.Location = new System.Drawing.Point(785, 375);
+            this.btnBuscarSelo.Location = new System.Drawing.Point(963, 375);
             this.btnBuscarSelo.Name = "btnBuscarSelo";
             this.btnBuscarSelo.Size = new System.Drawing.Size(91, 23);
             this.btnBuscarSelo.TabIndex = 4;
@@ -211,7 +208,7 @@
             // 
             // txtBoxBuscar
             // 
-            this.txtBoxBuscar.Location = new System.Drawing.Point(514, 375);
+            this.txtBoxBuscar.Location = new System.Drawing.Point(692, 375);
             this.txtBoxBuscar.Name = "txtBoxBuscar";
             this.txtBoxBuscar.Size = new System.Drawing.Size(265, 22);
             this.txtBoxBuscar.TabIndex = 18;
@@ -221,46 +218,15 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(288, 378);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(220, 17);
+            this.label4.Size = new System.Drawing.Size(398, 17);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Buscar por número de Selo/Placa";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(273, 406);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(235, 17);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Buscar por matrícula de proprietário";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // txtBoxMatriculaProp
-            // 
-            this.txtBoxMatriculaProp.Location = new System.Drawing.Point(514, 403);
-            this.txtBoxMatriculaProp.Name = "txtBoxMatriculaProp";
-            this.txtBoxMatriculaProp.Size = new System.Drawing.Size(265, 22);
-            this.txtBoxMatriculaProp.TabIndex = 21;
-            this.txtBoxMatriculaProp.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // btnBuscarSeloMatricula
-            // 
-            this.btnBuscarSeloMatricula.Location = new System.Drawing.Point(785, 403);
-            this.btnBuscarSeloMatricula.Name = "btnBuscarSeloMatricula";
-            this.btnBuscarSeloMatricula.Size = new System.Drawing.Size(91, 23);
-            this.btnBuscarSeloMatricula.TabIndex = 20;
-            this.btnBuscarSeloMatricula.Text = "Buscar";
-            this.btnBuscarSeloMatricula.UseVisualStyleBackColor = true;
-            this.btnBuscarSeloMatricula.Click += new System.EventHandler(this.buscarProprietario);
+            this.label4.Text = "Buscar por número de Selo/Placa ou matrícula do proprietário";
             // 
             // ManutencaoSelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1316, 504);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtBoxMatriculaProp);
-            this.Controls.Add(this.btnBuscarSeloMatricula);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBoxBuscar);
             this.Controls.Add(this.txtBoxPlaca);
@@ -308,8 +274,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProp;
         private System.Windows.Forms.TextBox txtBoxBuscar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtBoxMatriculaProp;
-        private System.Windows.Forms.Button btnBuscarSeloMatricula;
     }
 }

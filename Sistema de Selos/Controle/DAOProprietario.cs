@@ -60,18 +60,31 @@ namespace Sistema_de_Selos.Controle
             }
 
         }
+        
 
-        public string[] getMatriculaAndNameById(int id)
+        public List<Proprietario> select(string where)
         {
-            this.prepareConnection("select * from proprietario where idProprietario = " + id);
+            List<Proprietario> propList = new List<Proprietario>();
+
+            this.prepareConnection("select * from proprietario " + where );
             this.setReader();
-            string[] r = new string[] { };
             while (this.Reader.Read())
             {
-                r = new string[] { this.Reader.GetString("matricula"), this.Reader.GetString("nome") };
+                Proprietario p = new Proprietario(
+                    this.Reader.GetInt32("idProprietario"),
+                    this.Reader.GetString("nome"),
+                    this.Reader.GetString("matricula"),
+                    this.Reader.GetString("telefone"),
+                    this.Reader.GetString("email"),
+                    this.Reader.GetString("cargo"),
+                    this.Reader.GetString("area")
 
+                    );
+                propList.Add(p);
             }
-            return r;
+            this.closeConnection();
+            return propList;
+
         }
 
         public List<Proprietario> select()

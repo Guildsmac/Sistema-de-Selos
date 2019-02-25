@@ -42,17 +42,17 @@
             this.txtBoxIdProp = new System.Windows.Forms.TextBox();
             this.cBoxCargo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtBoxEmail = new System.Windows.Forms.TextBox();
+            this.labela = new System.Windows.Forms.Label();
+            this.txtBoxTelefone = new System.Windows.Forms.TextBox();
+            this.labelb = new System.Windows.Forms.Label();
             this.matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idProp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtBoxEmail = new System.Windows.Forms.TextBox();
-            this.labela = new System.Windows.Forms.Label();
-            this.txtBoxTelefone = new System.Windows.Forms.TextBox();
-            this.labelb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,7 +105,7 @@
             this.btnAtualizar.TabIndex = 6;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.alterarProprietario);
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAlterarProprietario);
             // 
             // btnDeletar
             // 
@@ -125,19 +125,19 @@
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.buscarProprietario);
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscarProprietario);
             // 
             // dgvProp
             // 
             this.dgvProp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.matricula,
+            this.idProp,
             this.nome,
             this.depCurso,
             this.cargo,
             this.email,
-            this.telefone,
-            this.idProp});
+            this.telefone});
             this.dgvProp.Location = new System.Drawing.Point(276, 27);
             this.dgvProp.Name = "dgvProp";
             this.dgvProp.RowTemplate.Height = 24;
@@ -201,43 +201,6 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Cargo";
             // 
-            // matricula
-            // 
-            this.matricula.HeaderText = "Matrícula";
-            this.matricula.Name = "matricula";
-            // 
-            // nome
-            // 
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            // 
-            // depCurso
-            // 
-            this.depCurso.HeaderText = "Departamento/Curso";
-            this.depCurso.Name = "depCurso";
-            this.depCurso.Width = 200;
-            // 
-            // cargo
-            // 
-            this.cargo.HeaderText = "Cargo";
-            this.cargo.Name = "cargo";
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            // 
-            // telefone
-            // 
-            this.telefone.HeaderText = "Telefone";
-            this.telefone.Name = "telefone";
-            // 
-            // idProp
-            // 
-            this.idProp.HeaderText = "Id Proprietário";
-            this.idProp.Name = "idProp";
-            this.idProp.Visible = false;
-            // 
             // txtBoxEmail
             // 
             this.txtBoxEmail.Location = new System.Drawing.Point(12, 180);
@@ -270,6 +233,43 @@
             this.labelb.Size = new System.Drawing.Size(64, 17);
             this.labelb.TabIndex = 18;
             this.labelb.Text = "Telefone";
+            // 
+            // matricula
+            // 
+            this.matricula.HeaderText = "Matrícula";
+            this.matricula.Name = "matricula";
+            // 
+            // idProp
+            // 
+            this.idProp.HeaderText = "Id Proprietário";
+            this.idProp.Name = "idProp";
+            this.idProp.Visible = false;
+            // 
+            // nome
+            // 
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            // 
+            // depCurso
+            // 
+            this.depCurso.HeaderText = "Departamento/Curso";
+            this.depCurso.Name = "depCurso";
+            this.depCurso.Width = 200;
+            // 
+            // cargo
+            // 
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.Name = "cargo";
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            // 
+            // telefone
+            // 
+            this.telefone.HeaderText = "Telefone";
+            this.telefone.Name = "telefone";
             // 
             // ManutencaoProprietario
             // 
@@ -319,16 +319,16 @@
         private System.Windows.Forms.TextBox txtBoxIdProp;
         private System.Windows.Forms.ComboBox cBoxCargo;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtBoxEmail;
+        private System.Windows.Forms.Label labela;
+        private System.Windows.Forms.TextBox txtBoxTelefone;
+        private System.Windows.Forms.Label labelb;
         private System.Windows.Forms.DataGridViewTextBoxColumn matricula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProp;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn depCurso;
         private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProp;
-        private System.Windows.Forms.TextBox txtBoxEmail;
-        private System.Windows.Forms.Label labela;
-        private System.Windows.Forms.TextBox txtBoxTelefone;
-        private System.Windows.Forms.Label labelb;
     }
 }

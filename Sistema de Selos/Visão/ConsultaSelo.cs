@@ -27,42 +27,22 @@ namespace Sistema_de_Selos
 
         private void ConsultaSelo_Load(object sender, EventArgs e)
         {
-            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listSelo = ds.select();
-            foreach (Selo temp in listSelo)
-            {
-                string[] data =
-                {
-                    temp.NumSelo.ToString(),
-                    temp.Placa,
-                    temp.MatriculaProprietario,
-                    temp.NomeProprietario,
-                };
-                dgvSelo.Rows.Add(data);
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> selos = udc.verVeiculo();
+            foreach(string[] temp in selos)
+                dgvSelo.Rows.Add(temp);
+            
         }
 
-        private void verVeiculo(object sender, EventArgs e)
+        private void btnClickBuscar(object sender, EventArgs e)
         {
             string searchSubject = txtBoxBuscar.Text;
-            DAOSelo ds = new DAOSelo();
             dgvSelo.Rows.Clear();
-            List<Selo> listProp = ds.select();
-            foreach (Selo temp in listProp)
-            {
-                if (temp.NumSelo.ToString().Contains(searchSubject) || temp.Placa.ToString().Contains(searchSubject))
-                {
-                    string[] data =
-                    {
-                    temp.NumSelo.ToString(),
-                    temp.Placa,
-                    temp.MatriculaProprietario,
-                    temp.NomeProprietario,
-                };
-                    dgvSelo.Rows.Add(data);
-                }
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> selos = udc.buscarVeiculo(searchSubject);
+            foreach (string[] temp in selos)
+                dgvSelo.Rows.Add(temp);
         }
 
         private void button2_Click(object sender, EventArgs e)

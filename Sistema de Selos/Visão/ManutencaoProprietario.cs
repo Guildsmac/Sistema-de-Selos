@@ -24,6 +24,16 @@ namespace Sistema_de_Selos
 
         }
 
+        public bool checkEmpty()
+        {
+            if (this.txtBoxNome.Text == "" || this.txtBoxMat.Text == "" ||
+               this.txtBoxTelefone.Text == "" || this.txtBoxEmail.Text == "" ||
+               this.txtBoxIdProp.Text == "" || this.cBoxCargo == null ||
+               this.cBoxDpt == null)
+                return true;
+            return false;
+        }
+
         private void clearAll()
         {
             this.txtBoxNome.Text = "";
@@ -31,44 +41,21 @@ namespace Sistema_de_Selos
             this.txtBoxTelefone.Text = "";
             this.txtBoxEmail.Text = "";
             this.txtBoxIdProp.Text = "";
-            DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.select();
-            foreach (Proprietario temp in listProp)
-            {
-                string[] data =
-                {
-                    temp.Matricula,
-                    temp.Nome,
-                    temp.Area,
-                    temp.Cargo,
-                    temp.Email,
-                    temp.Telefone,
-                    temp.IdProprietario.ToString()
-                };
-                dgvProp.Rows.Add(data);
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> proprietarios = udc.verProprietario();
+            foreach (string[] temp in proprietarios)
+                dgvProp.Rows.Add(temp);
         }
 
         private void ManutencaoProprietario_Load(object sender, EventArgs e)
         {
-            DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.select();
-            foreach(Proprietario temp in listProp)
-            {
-                string[] data =
-                {
-                    temp.Matricula,
-                    temp.Nome,
-                    temp.Area,
-                    temp.Cargo,
-                    temp.Email,
-                    temp.Telefone,
-                    temp.IdProprietario.ToString()
-                };
-                dgvProp.Rows.Add(data);
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> proprietarios = udc.verProprietario();
+            foreach (string[] temp in proprietarios)
+                dgvProp.Rows.Add(temp);
+
         }
 
         private string getColumnByPosition(int position)
@@ -79,13 +66,13 @@ namespace Sistema_de_Selos
         private void dgvProp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            this.txtBoxIdProp.Text = this.getColumnByPosition(6);
+            this.txtBoxIdProp.Text = this.getColumnByPosition(1);
             this.txtBoxMat.Text = this.getColumnByPosition(0);
-            this.txtBoxNome.Text = this.getColumnByPosition(1);
-            this.cBoxDpt.SelectedItem = this.getColumnByPosition(2);
-            this.cBoxCargo.SelectedItem = this.getColumnByPosition(3);
-            this.txtBoxEmail.Text = this.getColumnByPosition(4);
-            this.txtBoxTelefone.Text = this.getColumnByPosition(5);
+            this.txtBoxNome.Text = this.getColumnByPosition(2);
+            this.cBoxDpt.SelectedItem = this.getColumnByPosition(3);
+            this.cBoxCargo.SelectedItem = this.getColumnByPosition(4);
+            this.txtBoxEmail.Text = this.getColumnByPosition(5);
+            this.txtBoxTelefone.Text = this.getColumnByPosition(6);
 
 
         }
@@ -95,52 +82,44 @@ namespace Sistema_de_Selos
 
         }
 
-        private void buscarProprietario(object sender, EventArgs e)
+        private void btnBuscarProprietario(object sender, EventArgs e)
         {
             string searchSubject = txtBoxMat.Text;
-            DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.select();
-            foreach (Proprietario temp in listProp)
-            {
-                if (temp.Matricula.Contains(searchSubject))
-                {
-                    string[] data =
-                    {
-                    temp.Matricula,
-                    temp.Nome,
-                    temp.Area,
-                    temp.Cargo,
-                    temp.Email,
-                    temp.Telefone,
-                    temp.IdProprietario.ToString()
-                };
-                    dgvProp.Rows.Add(data);
-                }
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> proprietarios = udc.buscarProprietario(searchSubject);
+            foreach (string[] temp in proprietarios)
+                dgvProp.Rows.Add(temp);
+
         }
 
-        private void alterarProprietario(object sender, EventArgs e)
+        private void btnAlterarProprietario(object sender, EventArgs e)
         {
             if (this.txtBoxIdProp.Text != "")
             {
-                Proprietario p = new Proprietario(
-                    Convert.ToInt32(this.txtBoxIdProp.Text),
-                    this.txtBoxNome.Text,
-                    this.txtBoxMat.Text,
-                    this.txtBoxTelefone.Text,
-                    this.txtBoxEmail.Text,
-                    this.cBoxCargo.SelectedItem.ToString(),
-                    this.cBoxDpt.SelectedItem.ToString()
-                    );
-                DAOProprietario dp = new DAOProprietario();
-                if (dp.update(p) > 0)
+                if (!this.checkEmpty())
                 {
-                    MessageBox.Show("Proprietário atualizado com sucesso!");
-                    this.clearAll();
+                    UnidadeDeControle udc = new UnidadeDeControle();
+                    if (udc.alterarProprietario(
+                        Convert.ToInt32(this.txtBoxIdProp.Text),
+                        this.txtBoxNome.Text,
+                        this.txtBoxMat.Text,
+                        this.txtBoxTelefone.Text,
+                        this.txtBoxEmail.Text,
+                        this.cBoxCargo.SelectedItem.ToString(),
+                        this.cBoxDpt.SelectedItem.ToString()
+                        ))
+                    {
+                        MessageBox.Show("Proprietário atualizado com sucesso!");
+                        this.clearAll();
+                    }
+                    else
+                        MessageBox.Show("Erro ao salvar Dados");
+
+
                 }
                 else
-                    MessageBox.Show("Erro ao salvar Dados");
+                    MessageBox.Show("Por favor, preencha todos os dados.");
             }
             else
                 MessageBox.Show("Por favor, clique duas vezes em um dos funcionários da tabela!");
@@ -155,8 +134,8 @@ namespace Sistema_de_Selos
         {
             if(this.txtBoxIdProp.Text != "")
             {
-                DAOProprietario dp = new DAOProprietario();
-                if (dp.delete(this.txtBoxIdProp.Text) > 0)
+                UnidadeDeControle udc = new UnidadeDeControle();
+                if (udc.deletarProprietario(this.txtBoxIdProp.Text))
                 {
                     MessageBox.Show("Proprietário deletado com sucesso!");
                     this.clearAll();

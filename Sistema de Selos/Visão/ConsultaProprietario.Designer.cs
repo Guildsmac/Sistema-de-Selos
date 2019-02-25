@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.dgvProp = new System.Windows.Forms.DataGridView();
-            this.matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProprietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.depCurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProp)).BeginInit();
@@ -47,6 +48,7 @@
             this.dgvProp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.matricula,
+            this.idProprietario,
             this.nome,
             this.depCurso,
             this.cargo,
@@ -58,27 +60,6 @@
             this.dgvProp.Size = new System.Drawing.Size(1117, 376);
             this.dgvProp.TabIndex = 0;
             this.dgvProp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // matricula
-            // 
-            this.matricula.HeaderText = "Matrícula";
-            this.matricula.Name = "matricula";
-            // 
-            // nome
-            // 
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            // 
-            // depCurso
-            // 
-            this.depCurso.HeaderText = "Departamento/Curso";
-            this.depCurso.Name = "depCurso";
-            this.depCurso.Width = 200;
-            // 
-            // cargo
-            // 
-            this.cargo.HeaderText = "Cargo";
-            this.cargo.Name = "cargo";
             // 
             // btnVoltar
             // 
@@ -116,6 +97,33 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Matrícula";
             // 
+            // matricula
+            // 
+            this.matricula.HeaderText = "Matrícula";
+            this.matricula.Name = "matricula";
+            // 
+            // idProprietario
+            // 
+            this.idProprietario.HeaderText = "Column1";
+            this.idProprietario.Name = "idProprietario";
+            this.idProprietario.Visible = false;
+            // 
+            // nome
+            // 
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            // 
+            // depCurso
+            // 
+            this.depCurso.HeaderText = "Departamento/Curso";
+            this.depCurso.Name = "depCurso";
+            this.depCurso.Width = 200;
+            // 
+            // cargo
+            // 
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.Name = "cargo";
+            // 
             // email
             // 
             this.email.HeaderText = "Email";
@@ -148,14 +156,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvProp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn matricula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depCurso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn matricula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProprietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depCurso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone;
     }

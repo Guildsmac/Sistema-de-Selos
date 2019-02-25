@@ -26,48 +26,22 @@ namespace Sistema_de_Selos
 
         private void verProprietario(object sender, EventArgs e)
         {
-
-            string searchSubject = txtBoxSearch.Text;
-            DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.select();
-            foreach (Proprietario temp in listProp)
-            {
-                if (temp.Matricula.Contains(searchSubject))
-                {
-                    string[] data =
-                    {
-                    temp.Matricula,
-                    temp.Nome,
-                    temp.Area,
-                    temp.Cargo,
-                    temp.Email,
-                    temp.Telefone,
-                };
-                    dgvProp.Rows.Add(data);
-                }
-            }
+            string searchSubject = txtBoxSearch.Text;
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> proprietarios = udc.buscarProprietario(searchSubject);
+            foreach (string[] temp in proprietarios)
+                dgvProp.Rows.Add(temp);
+
         }
 
         private void ConsultaProprietario_Load(object sender, EventArgs e)
         {
-            
-            DAOProprietario dp = new DAOProprietario();
             dgvProp.Rows.Clear();
-            List<Proprietario> listProp = dp.select();
-            foreach (Proprietario temp in listProp)
-            {
-                string[] data =
-                {
-                    temp.Matricula,
-                    temp.Nome,
-                    temp.Area,
-                    temp.Cargo,
-                    temp.Email,
-                    temp.Telefone,
-                };
-                dgvProp.Rows.Add(data);
-            }
+            UnidadeDeControle udc = new UnidadeDeControle();
+            List<string[]> proprietarios = udc.verProprietario();
+            foreach (string[] temp in proprietarios)
+                dgvProp.Rows.Add(temp);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

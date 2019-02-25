@@ -67,6 +67,7 @@
     <Compile Include="Controle\Connection.cs" />
     <Compile Include="Controle\DAOProprietario.cs" />
     <Compile Include="Controle\DAOSelo.cs" />
+    <Compile Include="Controle\UnidadeDeControle.cs" />
     <Compile Include="Modelo\Proprietario.cs" />
     <Compile Include="Modelo\Selo.cs" />
     <Compile Include="Visão\CadastroProprietario.cs">
@@ -75,11 +76,11 @@
     <Compile Include="Visão\CadastroProprietario.Designer.cs">
       <DependentUpon>CadastroProprietario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Visão\CadastroSelo.cs">
+    <Compile Include="Visão\CadastroVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Visão\CadastroSelo.Designer.cs">
-      <DependentUpon>CadastroSelo.cs</DependentUpon>
+    <Compile Include="Visão\CadastroVeiculo.Designer.cs">
+      <DependentUpon>CadastroVeiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Visão\ConsultaProprietario.cs">
       <SubType>Form</SubType>
@@ -116,8 +117,8 @@
     <EmbeddedResource Include="Visão\CadastroProprietario.resx">
       <DependentUpon>CadastroProprietario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Visão\CadastroSelo.resx">
-      <DependentUpon>CadastroSelo.cs</DependentUpon>
+    <EmbeddedResource Include="Visão\CadastroVeiculo.resx">
+      <DependentUpon>CadastroVeiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visão\ConsultaProprietario.resx">
       <DependentUpon>ConsultaProprietario.cs</DependentUpon>

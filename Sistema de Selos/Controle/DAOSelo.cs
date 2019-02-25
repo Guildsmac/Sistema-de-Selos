@@ -58,20 +58,36 @@ namespace Sistema_de_Selos.Controle
         public List<Selo> select()
         {
             List<Selo> seloList = new List<Selo>();
-            this.prepareConnection("select * from selo");
+            this.prepareConnection("select * from selo ");
             this.setReader();
             while (this.Reader.Read())
             {
-                DAOProprietario dp = new DAOProprietario();
-                string[] data = dp.getMatriculaAndNameById(this.Reader.GetInt32("Proprietario_idProprietario"));
                 Selo p = new Selo(
-                    this.Reader.GetInt32("Proprietario_idProprietario"),
                     this.Reader.GetInt32("idSelo"),
+                    this.Reader.GetInt32("Proprietario_idProprietario"),
                     this.Reader.GetString("placa"),
                     this.Reader.GetString("modelo"),
-                    this.Reader.GetString("cor"),
-                    data[0],
-                    data[1]
+                    this.Reader.GetString("cor")
+                    );
+                seloList.Add(p);
+
+            }
+            return seloList;
+        }
+
+        public List<Selo> select(string conditions)
+        {
+            List<Selo> seloList = new List<Selo>();
+            this.prepareConnection("select * from selo " + conditions);
+            this.setReader();
+            while (this.Reader.Read())
+            {
+                Selo p = new Selo(
+                    this.Reader.GetInt32("idSelo"),
+                    this.Reader.GetInt32("Proprietario_idProprietario"),
+                    this.Reader.GetString("placa"),
+                    this.Reader.GetString("modelo"),
+                    this.Reader.GetString("cor")
                     );
                 seloList.Add(p);
 
