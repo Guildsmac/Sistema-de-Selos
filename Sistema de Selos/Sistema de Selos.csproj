@@ -66,10 +66,10 @@
   <ItemGroup>
     <Compile Include="Controle\Connection.cs" />
     <Compile Include="Controle\DAOProprietario.cs" />
-    <Compile Include="Controle\DAOSelo.cs" />
+    <Compile Include="Controle\DAOVeiculo.cs" />
     <Compile Include="Controle\UnidadeDeControle.cs" />
     <Compile Include="Modelo\Proprietario.cs" />
-    <Compile Include="Modelo\Selo.cs" />
+    <Compile Include="Modelo\Veiculo.cs" />
     <Compile Include="Visão\CadastroProprietario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +88,11 @@
     <Compile Include="Visão\ConsultaProprietario.Designer.cs">
       <DependentUpon>ConsultaProprietario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Visão\ConsultaSelo.cs">
+    <Compile Include="Visão\ConsultaVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Visão\ConsultaSelo.Designer.cs">
-      <DependentUpon>ConsultaSelo.cs</DependentUpon>
+    <Compile Include="Visão\ConsultaVeiculo.Designer.cs">
+      <DependentUpon>ConsultaVeiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Visão\frmMain.cs">
       <SubType>Form</SubType>
@@ -106,11 +106,11 @@
     <Compile Include="Visão\ManutencaoProprietario.Designer.cs">
       <DependentUpon>ManutencaoProprietario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Visão\ManutencaoSelo.cs">
+    <Compile Include="Visão\ManutencaoVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Visão\ManutencaoSelo.Designer.cs">
-      <DependentUpon>ManutencaoSelo.cs</DependentUpon>
+    <Compile Include="Visão\ManutencaoVeiculo.Designer.cs">
+      <DependentUpon>ManutencaoVeiculo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,8 +123,8 @@
     <EmbeddedResource Include="Visão\ConsultaProprietario.resx">
       <DependentUpon>ConsultaProprietario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Visão\ConsultaSelo.resx">
-      <DependentUpon>ConsultaSelo.cs</DependentUpon>
+    <EmbeddedResource Include="Visão\ConsultaVeiculo.resx">
+      <DependentUpon>ConsultaVeiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visão\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -132,8 +132,8 @@
     <EmbeddedResource Include="Visão\ManutencaoProprietario.resx">
       <DependentUpon>ManutencaoProprietario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Visão\ManutencaoSelo.resx">
-      <DependentUpon>ManutencaoSelo.cs</DependentUpon>
+    <EmbeddedResource Include="Visão\ManutencaoVeiculo.resx">
+      <DependentUpon>ManutencaoVeiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

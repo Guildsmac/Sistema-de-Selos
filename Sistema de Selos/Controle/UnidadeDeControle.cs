@@ -124,22 +124,22 @@ namespace Sistema_de_Selos.Controle
             string cor
 
             ) {
-            DAOSelo ds = new DAOSelo();
-            List<Selo> selosComProprietario = ds.select("where Proprietario_idProprietario = " + idProprietario);
+            DAOVeiculo ds = new DAOVeiculo();
+            List<Veiculo> selosComProprietario = ds.select("where Proprietario_idProprietario = " + idProprietario);
 
             if (selosComProprietario.Count >= 2)
                 return false;
             
             else
             {
-                Selo s = new Selo(
+                Veiculo s = new Veiculo(
                     idProprietario,
                     placa,
                     modelo,
                     cor
 
                 );
-                ds = new DAOSelo();
+                ds = new DAOVeiculo();
                 if (ds.insert(s) > 0)
                     return true;
                 return false;
@@ -148,15 +148,15 @@ namespace Sistema_de_Selos.Controle
 
         public int pegarUltimoVeiculo()
         {
-            DAOSelo ds = new DAOSelo();
+            DAOVeiculo ds = new DAOVeiculo();
             return ds.getLastInsertedID();
         }
 
         public List<string[]> buscarVeiculo(string searchSubject) {
             List<string[]> r = new List<string[]>();
-            DAOSelo ds = new DAOSelo();
-            List<Selo> listSelo = ds.select();
-            foreach (Selo temp in listSelo)
+            DAOVeiculo ds = new DAOVeiculo();
+            List<Veiculo> listSelo = ds.select();
+            foreach (Veiculo temp in listSelo)
             {
                 DAOProprietario dp = new DAOProprietario();
                 List<Proprietario> listProp = dp.select("where idProprietario = " + temp.IdProprietario);
@@ -186,8 +186,8 @@ namespace Sistema_de_Selos.Controle
 
             )
         {
-            DAOSelo ds = new DAOSelo();
-            Selo s = new Selo(
+            DAOVeiculo ds = new DAOVeiculo();
+            Veiculo s = new Veiculo(
                 idSelo,
                 0,
                 placa,
@@ -202,9 +202,9 @@ namespace Sistema_de_Selos.Controle
 
         public List<string[]> verVeiculo() {
             List<string[]> r = new List<string[]>();
-            DAOSelo ds = new DAOSelo();
-            List<Selo> listSelo = ds.select();
-            foreach (Selo temp in listSelo)
+            DAOVeiculo ds = new DAOVeiculo();
+            List<Veiculo> listSelo = ds.select();
+            foreach (Veiculo temp in listSelo)
             {
                 DAOProprietario dp = new DAOProprietario();
                 List<Proprietario> listProp = dp.select("where idProprietario = " + temp.IdProprietario.ToString());
@@ -226,21 +226,10 @@ namespace Sistema_de_Selos.Controle
         }
 
         public bool deletarVeiculo(int id) {
-            DAOSelo ds = new DAOSelo();
+            DAOVeiculo ds = new DAOVeiculo();
             if (ds.delete(Convert.ToInt32(id)) > 0)
                 return true;
             return false;
         }
-
-
-        
-
-        
-
-        
-
-
-
-
     }
 }
